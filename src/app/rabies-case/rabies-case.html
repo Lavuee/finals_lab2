@@ -1,0 +1,41 @@
+<h2>Rabies Case Reports</h2>
+
+<form (ngSubmit)="save()">
+  <input type="date" [(ngModel)]="form.date" name="date">
+
+  <input type="text" [(ngModel)]="form.patientName" name="patientName" placeholder="Patient Name">
+
+  <input type="number" [(ngModel)]="form.age" name="age" placeholder="Age">
+
+  <select [(ngModel)]="form.gender" name="gender">
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select>
+
+  <input type="text" [(ngModel)]="form.animalType" name="animalType" placeholder="Animal Type">
+
+  <select [(ngModel)]="form.rabiesStatus" name="rabiesStatus">
+    <option>Positive</option>
+    <option>Negative</option>
+    <option>Unknown</option>
+  </select>
+
+  <input type="text" [(ngModel)]="form.treatmentGiven" name="treatmentGiven" placeholder="Treatment Given">
+
+  <button type="submit">{{ editId ? 'Update' : 'Add' }}</button>
+</form>
+
+<hr>
+
+<table>
+  <tr *ngFor="let r of records">
+    <td>{{ r.date }}</td>
+    <td>{{ r.patientName }}</td>
+    <td>{{ r.animalType }}</td>
+    <td>
+      <button (click)="edit(r)">Edit</button>
+      <button (click)="remove(r.id)">Delete</button>
+    </td>
+  </tr>
+</table>

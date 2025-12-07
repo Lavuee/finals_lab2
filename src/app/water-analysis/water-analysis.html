@@ -1,0 +1,30 @@
+<h2>Water Analysis Results</h2>
+
+<form (ngSubmit)="save()">
+  <input type="date" [(ngModel)]="form.date" name="date" required>
+
+  <input type="text" [(ngModel)]="form.sourceAddress" name="sourceAddress" placeholder="Source Address">
+
+  <select [(ngModel)]="form.waterStatus" name="waterStatus">
+    <option>Potable</option>
+    <option>Not Potable</option>
+  </select>
+
+  <textarea [(ngModel)]="form.remarks" name="remarks" placeholder="Remarks"></textarea>
+
+  <button type="submit">{{ editId ? 'Update' : 'Add' }}</button>
+</form>
+
+<hr>
+
+<table>
+  <tr *ngFor="let r of records">
+    <td>{{ r.date }}</td>
+    <td>{{ r.sourceAddress }}</td>
+    <td>{{ r.waterStatus }}</td>
+    <td>
+      <button (click)="edit(r)">Edit</button>
+      <button (click)="remove(r.id)">Delete</button>
+    </td>
+  </tr>
+</table>
